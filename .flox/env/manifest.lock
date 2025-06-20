@@ -1,0 +1,638 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "easyocr": {
+        "pkg-path": "python312Packages.easyocr"
+      },
+      "imagehash": {
+        "pkg-path": "python312Packages.imagehash"
+      },
+      "jupyter": {
+        "pkg-path": "python312Packages.jupyter"
+      },
+      "pdfplumber": {
+        "pkg-path": "python312Packages.pdfplumber"
+      },
+      "python312": {
+        "pkg-path": "python312"
+      }
+    },
+    "hook": {},
+    "profile": {},
+    "options": {
+      "systems": [
+        "aarch64-darwin",
+        "aarch64-linux",
+        "x86_64-darwin",
+        "x86_64-linux"
+      ]
+    },
+    "services": {
+      "jupyter": {
+        "command": "jupyter server --port 8888"
+      }
+    }
+  },
+  "packages": [
+    {
+      "attr_path": "python312Packages.easyocr",
+      "broken": false,
+      "derivation": "/nix/store/5ambdmjvfmhrighlfg0n1xzjxs40cl3y-python3.12-easyocr-1.7.2.drv",
+      "description": "Ready-to-use OCR with 80+ supported languages and all popular writing scripts",
+      "install_id": "easyocr",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "easyocr-1.7.2",
+      "pname": "easyocr",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:26.600979Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/yw4mz41nb5mw9aa3p2c36q6bsx202z8x-python3.12-easyocr-1.7.2-dist",
+        "out": "/nix/store/6hw65krjbvrcg0cfcssa0c9qsrnxjq8r-python3.12-easyocr-1.7.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.easyocr",
+      "broken": false,
+      "derivation": "/nix/store/d5cbnxn55x6125vsaj0lvwv4yb6c3h2c-python3.12-easyocr-1.7.2.drv",
+      "description": "Ready-to-use OCR with 80+ supported languages and all popular writing scripts",
+      "install_id": "easyocr",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "easyocr-1.7.2",
+      "pname": "easyocr",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:13.416528Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/14mp912xghwyjzjqjjwghxa9lyjjx471-python3.12-easyocr-1.7.2-dist",
+        "out": "/nix/store/zrd990fcwd375hq39hsiyha3jvjwb983-python3.12-easyocr-1.7.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.easyocr",
+      "broken": false,
+      "derivation": "/nix/store/dygwqg2pbdw508r3g01cndsryrpa6iv7-python3.12-easyocr-1.7.2.drv",
+      "description": "Ready-to-use OCR with 80+ supported languages and all popular writing scripts",
+      "install_id": "easyocr",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "easyocr-1.7.2",
+      "pname": "easyocr",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:34.137208Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/wpasfygll3v949dz683lr6m7m2y4q9lj-python3.12-easyocr-1.7.2-dist",
+        "out": "/nix/store/fzkqqx18211riq738jr9dg64h03b39ai-python3.12-easyocr-1.7.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.easyocr",
+      "broken": false,
+      "derivation": "/nix/store/9zhbrhlq2a41ygv47nibn53sad3035i1-python3.12-easyocr-1.7.2.drv",
+      "description": "Ready-to-use OCR with 80+ supported languages and all popular writing scripts",
+      "install_id": "easyocr",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "easyocr-1.7.2",
+      "pname": "easyocr",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:56.454045Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/sw4na723270w6vsqvsx7i6gp9pffqpdh-python3.12-easyocr-1.7.2-dist",
+        "out": "/nix/store/mgj1ih32skginvxi62p6ybw49qcazpya-python3.12-easyocr-1.7.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.imagehash",
+      "broken": false,
+      "derivation": "/nix/store/y3dw3g3w3r0pp9iyfy0w473106bh0ch1-python3.12-imagehash-4.3.2.drv",
+      "description": "Python Perceptual Image Hashing Module",
+      "install_id": "imagehash",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-imagehash-4.3.2",
+      "pname": "imagehash",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:27.521116Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.3.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/ni1aadrrszals3pxblbd0ky7w9p7wv5i-python3.12-imagehash-4.3.2-dist",
+        "out": "/nix/store/ippn05gcgwdazw9dzg7h80vxnfr2104w-python3.12-imagehash-4.3.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.imagehash",
+      "broken": false,
+      "derivation": "/nix/store/36bdqrbyrffdxa933h9b8xjc4xwb3l62-python3.12-imagehash-4.3.2.drv",
+      "description": "Python Perceptual Image Hashing Module",
+      "install_id": "imagehash",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-imagehash-4.3.2",
+      "pname": "imagehash",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:14.870323Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.3.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/y3zqwy2km24mbgssvjd2cph42mr9iahj-python3.12-imagehash-4.3.2-dist",
+        "out": "/nix/store/ypvmg3l0rb2n8k9wkf9arj1v9vvyvibr-python3.12-imagehash-4.3.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.imagehash",
+      "broken": false,
+      "derivation": "/nix/store/39wi0p8p17kqw9advdj067hvvyin6ffw-python3.12-imagehash-4.3.2.drv",
+      "description": "Python Perceptual Image Hashing Module",
+      "install_id": "imagehash",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-imagehash-4.3.2",
+      "pname": "imagehash",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:35.068100Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.3.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/x5bz6ivyvsdpiaqgcp8in4kw4l74dlp9-python3.12-imagehash-4.3.2-dist",
+        "out": "/nix/store/nynwr8g9imynr0qlkbslp9g80pfhp8w0-python3.12-imagehash-4.3.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.imagehash",
+      "broken": false,
+      "derivation": "/nix/store/f7h2fpc0nhlyw81w5vsl9wgpvn4icgij-python3.12-imagehash-4.3.2.drv",
+      "description": "Python Perceptual Image Hashing Module",
+      "install_id": "imagehash",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-imagehash-4.3.2",
+      "pname": "imagehash",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:58.021894Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.3.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/x7s8vhwvma5yj6ccmr6mbq2iwfvjkc49-python3.12-imagehash-4.3.2-dist",
+        "out": "/nix/store/n1xads16b1d3f3pdnyn7zy0bpgl2n72l-python3.12-imagehash-4.3.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.jupyter",
+      "broken": false,
+      "derivation": "/nix/store/ajmzms09sxxxi77wmn1vax64586m9mgk-python3.12-jupyter-1.1.1.drv",
+      "description": "Installs all the Jupyter components in one go",
+      "install_id": "jupyter",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-jupyter-1.1.1",
+      "pname": "jupyter",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:27.770135Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/vhm0wybypc9yc2f2x7dz2r066x0wgjbf-python3.12-jupyter-1.1.1-dist",
+        "out": "/nix/store/xf7m768kxv1aq6yjappfiddfry97pgp1-python3.12-jupyter-1.1.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.jupyter",
+      "broken": false,
+      "derivation": "/nix/store/agy8w33167lwkz60h0sqxwlimbjjvp3y-python3.12-jupyter-1.1.1.drv",
+      "description": "Installs all the Jupyter components in one go",
+      "install_id": "jupyter",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-jupyter-1.1.1",
+      "pname": "jupyter",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:15.257402Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/lqhwjvgg83094r8k4b1g9xx9wf13yd5m-python3.12-jupyter-1.1.1-dist",
+        "out": "/nix/store/969fk51gi85khkx2i5hds300nhb8lsri-python3.12-jupyter-1.1.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.jupyter",
+      "broken": false,
+      "derivation": "/nix/store/rj9kc7vbik7043mk9wgi8945cf3kh6xx-python3.12-jupyter-1.1.1.drv",
+      "description": "Installs all the Jupyter components in one go",
+      "install_id": "jupyter",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-jupyter-1.1.1",
+      "pname": "jupyter",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:35.319895Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/4whdzr48f8qyr1mh86appnp58xq7isjn-python3.12-jupyter-1.1.1-dist",
+        "out": "/nix/store/ixvj6bbah04sn3ymzakv9az9yj5836r9-python3.12-jupyter-1.1.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.jupyter",
+      "broken": false,
+      "derivation": "/nix/store/rhrg73c8izq4c9y34c7xlwka42j1rb15-python3.12-jupyter-1.1.1.drv",
+      "description": "Installs all the Jupyter components in one go",
+      "install_id": "jupyter",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-jupyter-1.1.1",
+      "pname": "jupyter",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:58.438962Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/2mmza2qxpih7g5sa6373x609cg5czvh5-python3.12-jupyter-1.1.1-dist",
+        "out": "/nix/store/4ngqgr9h0yg0n3k4wbhh021jaxvjs5bm-python3.12-jupyter-1.1.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pdfplumber",
+      "broken": false,
+      "derivation": "/nix/store/zd9cs4jycdljbhbvi2vr0ci3s1f6hbxk-python3.12-pdfplumber-0.11.7.drv",
+      "description": "Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables",
+      "install_id": "pdfplumber",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pdfplumber-0.11.7",
+      "pname": "pdfplumber",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:29.367126Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/6j4hvabpmk0292b0nc5jw6p54f31s1nj-python3.12-pdfplumber-0.11.7-dist",
+        "out": "/nix/store/sp4lj2ilzb3gayf6czhabxnfnizpl0d4-python3.12-pdfplumber-0.11.7"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pdfplumber",
+      "broken": false,
+      "derivation": "/nix/store/1way5kdz1z51pfrkfbfv58mjz6sib0bv-python3.12-pdfplumber-0.11.7.drv",
+      "description": "Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables",
+      "install_id": "pdfplumber",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pdfplumber-0.11.7",
+      "pname": "pdfplumber",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:17.781548Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/52qmzgl6vka3g76bfly9vy6ixpjm8qqa-python3.12-pdfplumber-0.11.7-dist",
+        "out": "/nix/store/3z0zzyj5bc942ngw5inagm1nlikr90s0-python3.12-pdfplumber-0.11.7"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pdfplumber",
+      "broken": false,
+      "derivation": "/nix/store/c2mv0h9qxw5ria7wd7dxbw5fpdm39sdj-python3.12-pdfplumber-0.11.7.drv",
+      "description": "Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables",
+      "install_id": "pdfplumber",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pdfplumber-0.11.7",
+      "pname": "pdfplumber",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:36.947530Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/i8hiwkm95gn0qzsi3czd9ff14z7qs4ci-python3.12-pdfplumber-0.11.7-dist",
+        "out": "/nix/store/k2hf6mcj6vkmfj610plccjh6zsshvybh-python3.12-pdfplumber-0.11.7"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pdfplumber",
+      "broken": false,
+      "derivation": "/nix/store/4pfwsgnqmbqx21np2bc84wlnj9zyrpm5-python3.12-pdfplumber-0.11.7.drv",
+      "description": "Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables",
+      "install_id": "pdfplumber",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pdfplumber-0.11.7",
+      "pname": "pdfplumber",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:33:01.148384Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.11.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/z3zq8cjcghmki9ns02sbsdpw23k2kxnl-python3.12-pdfplumber-0.11.7-dist",
+        "out": "/nix/store/z0n3fb6q5xjh2z90715if7adfn80zb5b-python3.12-pdfplumber-0.11.7"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312",
+      "broken": false,
+      "derivation": "/nix/store/b3gcarlbbnfv6walgjbcf21ay5n609p1-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:24.958263Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/v0vy1c59f0vf71h64caw17hzymvg0zms-python3-3.12.10"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312",
+      "broken": false,
+      "derivation": "/nix/store/255a922py8f7cs97nwazx68jiz2zl0r8-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:10.787692Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/p61ablwahkxdx97pwlz29b04zpncgmvg-python3-3.12.10-debug",
+        "out": "/nix/store/rpf3admp58i0lwmsbv0y3dg7l7qqj4a9-python3-3.12.10"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312",
+      "broken": false,
+      "derivation": "/nix/store/6bz0xjfswjawj6anvyw9mbk8fh8rd6sw-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:32.475143Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/g13l84j8gn1fdhl3pzkg2r9ip9jz1hhd-python3-3.12.10"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312",
+      "broken": false,
+      "derivation": "/nix/store/h95xflanqqarxi1j9wxmmvsh62yz8nv1-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:53.619114Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/fi03x2bn49bmm3h53snkdmkypilnd5n2-python3-3.12.10-debug",
+        "out": "/nix/store/8w718rm43x7z73xhw9d6vh8s4snrq67h-python3-3.12.10"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}
