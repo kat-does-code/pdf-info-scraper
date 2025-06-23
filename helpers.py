@@ -34,24 +34,30 @@ class ExtractedArtifact:
         return f"ExtractedArtifact(page_number={self.page_number}, text_length={len(self.text)}, object_ref={self.object_ref}, description={self.description})"
 
 class PossibleArtifactFinding():
-    def __init__(self, page_number, text, artifact_type: ArtifactType):
+    def __init__(self, page_number, text, artifact_type: ArtifactType, matched_data: str, matched_data_type: str):
         self.page_number : int = page_number
         self.text : str = text
         self.artifact_type = artifact_type
+        self.matched_data = matched_data
+        self.matched_data_type = matched_data_type
 
     @staticmethod
-    def from_extracted_artifact(extracted_artifact: ExtractedArtifact):
+    def from_extracted_artifact(extracted_artifact: ExtractedArtifact, matched_data: str, matched_data_type: str) -> 'PossibleArtifactFinding':
         return PossibleArtifactFinding(
             page_number=extracted_artifact.page_number,
             text=extracted_artifact.text,
-            artifact_type=extracted_artifact.artifact_type
+            artifact_type=extracted_artifact.artifact_type,
+            matched_data=matched_data,
+            matched_data_type=matched_data_type
         )
     
     def to_dict(self):
         return {
             "page_number": self.page_number,
             "text": self.text,
-            "artifact_type": self.artifact_type.value
+            "artifact_type": self.artifact_type.value,
+            "matched_data": self.matched_data,
+            "matched_data_type": self.matched_data_type
         }
     
 
@@ -95,7 +101,7 @@ def _extract_image_data_from_pdf_image(image) -> Image.Image:
 
 async def extract_images_from_pdf(pdf: pdfplumber.PDF):
     try:
-        reader = easyocr.Reader(['en', 'nl'], gpu=False)
+        reader = easyocr.Reader(['en', 'nl'], gpu=True)
         logging.info(f"Extracting images from PDF: {pdf.path.as_posix()} with {len(pdf.pages)} pages")
         for page in pdf.pages:
             for img in page.images:
@@ -141,13 +147,13 @@ async def _process_pdf(pdf_path: str):
             if artifact.text:
                 for data_type, data in extract_pii(artifact.text):
                     logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in text of PDF {pdf_path}")
-                    yield PossibleArtifactFinding.from_extracted_artifact(artifact)
+                    yield PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type)
 
         async for artifact in images:
             if artifact.text:
                 for data_type, data in extract_pii(" ".join(artifact.text)):
                     logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in image of PDF {pdf_path}")
-                    yield PossibleArtifactFinding.from_extracted_artifact(artifact)
+                    yield PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type)
 
 async def process_pdf_collection(pdf_path: list[str]) -> list[PossibleArtifactFinding]:
     """Processes a collection of PDF files to extract text and images, yielding PII data found in the text.
