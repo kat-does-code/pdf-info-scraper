@@ -1,0 +1,35 @@
+[
+    {
+        "page_number": 1,
+        "text": "5202\nnuJ\n81\n]IA.sc[\n1v77651.6052:viXra\nE W A : Bridging Physical-Digital\nMBODIED EB GENTS\nRealms for Integrated Agent Intelligence\nYining Hong* Rui Sun* Bingxuan Li\u2020 Xingcheng Yao\u2020 Maxine Wu\u2020 Alexander Chien\u2020\nDa Yin Ying Nian Wu Zhecan James Wang Kai-Wei Chang\nUniversity of California, Los Angeles\nAbstract\nAI agents today are mostly siloed \u2014 they either retrieve and reason over vast\namount of digital information and knowledge obtained online; or interact with the\nphysical world through embodied perception, planning and action \u2014 but rarely both.\nThis separation limits their ability to solve tasks that require integrated physical and\ndigital intelligence, such as cooking from online recipes, navigating with dynamic\nmap data, or interpreting real-world landmarks using web knowledge. We introduce\nE W A , a novel paradigm for AI agents that fluidly bridge\nMBODIED EB GENTS\nembodiment and web-scale reasoning. To operationalize this concept, we first\ndevelop the E W A task environments, a unified simulation\nMBODIED EB GENTS\nplatform that tightly integrates realistic 3D indoor and outdoor environments with\nfunctional web interfaces. Building upon this platform, we construct and release the\nE W A Benchmark, which encompasses a diverse suite of tasks\nMBODIED EB GENTS\nincluding cooking, navigation, shopping, tourism, and geolocation \u2014 all requiring\ncoordinated reasoning across physical and digital realms for systematic assessment\nof cross-domain intelligence. Experimental results reveal significant performance\ngaps between state-of-the-art AI systems and human capabilities, establishing both\nchallenges and opportunities at the intersection of embodied cognition and web-\nscale knowledge access. All datasets, codes and websites are publicly available at\nour project page https://embodied-web-agent.github.io/.\n1 Introduction\nRecently, we have seen the proliferation of web agents capable of retrieving information online [Shi\net al., 2017, Yao et al., 2022, Deng et al., 2023, Zhou et al., 2023, Koh et al., 2024] \u2014 yet they remain\nconfined to screens disembodied from the real world. Meanwhile, their physical counterparts \u2014\nrobots and embodied systems \u2014 navigate the world but with limited access to the Internet. What if\nthe boundary between the digital and physical realms were shattered? What if web agents stepped\nout of the browser, with keys to perceive and act in the real 3D physical world, while physical robots\nautonomously tapped into the encyclopedic knowledge of the web? As illustrated in Figure 1, such\nagents would not only assess the ingredients in your kitchen, search for matching recipes online,\nshop for missing items, and cook your favorite dish for you; but also traverse historical landmarks,\ninterpret architectural styles using both their own perception and Wikipedia, leave personalized\nreviews, and perhaps even return with a souvenir in hand. We, as humans, don\u2019t compartmentalize\nour intelligence into \"physical-only\" and \"digital-only\" modules \u2014 we fluidly move between realms.\nWhat if contemporary AI agents could likewise achieve the best of both worlds?\nBuilding such agents goes far beyond a mere combination of isolated web and embodied systems; it\npresents a set of deeply intertwined challenges. The first is the perceptual grounding problem: how\ncan an agent link abstract digital instructions (e.g., \"cook potato and egg until golden brown\" as in\nPreprint. Under review.\n",
+        "artifact_type": "text"
+    },
+    {
+        "page_number": 2,
+        "text": [
+            "Wikipedia",
+            "St. Patrick's Cathedral (Midtown Manhatta",
+            "St. Patrick's Cathedral is a Catholic cathedral in the Midtown Manhattar",
+            "the Archbishop of New York as well as a parish church. The cathedral oc",
+            "Madison Avenue, 5Oth Street; and 51st Street; directly across from Rocke",
+            "the largest Gothic Revival Catholic cathedral in North America.",
+            "For the cathedral's predecessor and",
+            "current parish in Lower Manhattan; see St. Patric",
+            "The cathedral was constructed starting in 1858 to accommodate the",
+            "growing Archdiocese of",
+            "York and to replace St. Patrick's Old",
+            "Cathedral. Work was halted in the early 1860s during the American Civil",
+            "New"
+        ],
+        "artifact_type": "image"
+    },
+    {
+        "page_number": 2,
+        "text": [
+            "anearl",
+            "029635",
+            "Car"
+        ],
+        "artifact_type": "image"
+    }
+]
