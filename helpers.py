@@ -22,9 +22,15 @@ def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
                 if not rect.get('fill', None) == True:
                     continue
 
+                # check if the rectangle has a dark color
+                non_stroking_color = rect.get('non_stroking_color', [])
+                if isinstance(non_stroking_color, float):
+                    non_stroking_color = [non_stroking_color]
+                if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
+                    continue
+
                 # Capture text inside the rectangle
                 x0, y0, x1, y1 = rect['x0'], rect['y0'], rect['x1'], rect['y1']
-                width,height = rect['width'], rect['height']
                 for char in page.objects["char"]:
                     if (
                         char['x0'] >= x0 and char['x1'] <= x1 and
