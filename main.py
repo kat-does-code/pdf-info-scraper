@@ -2,9 +2,8 @@ import argparse
 import multiprocessing as mp
 from pathlib import Path
 import logging
-from helpers import process_pdf_collection, PossibleArtifactFinding
+from helpers import process_pdf
 import asyncio
-import io
 import json
 
 logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -41,14 +40,26 @@ def parse_args():
 
     return pdf_files, output_dir
 
-
+async def run_in_thread(path):
+    loop = asyncio.get_running_loop()
+    try:
+        return await loop.run_in_executor(None, lambda: asyncio.run(process_pdf(path)))
+    except Exception as e:
+        logging.error(f"Error processing PDF {path}: {e}", exc_info=True)
+        return None
+    
 def main():
     target_files, output_dir = parse_args()
     logging.info(f"Starting processing of {len(target_files)} PDF files...")
 
+    async def process_all_pdfs(pdf_paths):
+        tasks = [run_in_thread(path) for path in pdf_paths]
+        results = await asyncio.gather(*tasks)
+        return [res for res in results if res is not None]
+
     loop = asyncio.get_event_loop()
     try:
-        results = loop.run_until_complete(process_pdf_collection([f.as_posix() for f in target_files]))
+        results = loop.run_until_complete(process_all_pdfs([f.as_posix() for f in target_files]))
     except Exception as e:
         logging.error(f"An error occurred during processing: {e}", exc_info=True)
         return

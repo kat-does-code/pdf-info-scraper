@@ -1,65 +1,14 @@
-import enum
 import io
 import logging
 from pydoc import resolve
-import queue
-from typing import AsyncGenerator, Generator, Optional
+from classes import ExtractedArtifact, PossibleArtifactFinding, ScannedPDF
 import pdfplumber 
 import easyocr
 import re
 from PIL import Image
 from regexes import re_objects
-import asyncio
 
 PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
-
-class ArtifactType(enum.Enum):
-    TEXT = "text"
-    IMAGE = "image"
-
-class ExtractedArtifact:
-    def __init__(self, page_number, text, object_ref=None, description=""):
-        self.page_number : int = page_number
-        self.text : str = text
-        self.object_ref : Optional[any] = object_ref
-        self.description : Optional[str] = description
-
-        match self.object_ref:
-            case None:
-                self.artifact_type = ArtifactType.TEXT
-            case _:
-                self.artifact_type = ArtifactType.IMAGE
-
-    def __repr__(self):
-        return f"ExtractedArtifact(page_number={self.page_number}, text_length={len(self.text)}, object_ref={self.object_ref}, description={self.description})"
-
-class PossibleArtifactFinding():
-    def __init__(self, page_number, text, artifact_type: ArtifactType, matched_data: str, matched_data_type: str):
-        self.page_number : int = page_number
-        self.text : str = text
-        self.artifact_type = artifact_type
-        self.matched_data = matched_data
-        self.matched_data_type = matched_data_type
-
-    @staticmethod
-    def from_extracted_artifact(extracted_artifact: ExtractedArtifact, matched_data: str, matched_data_type: str) -> 'PossibleArtifactFinding':
-        return PossibleArtifactFinding(
-            page_number=extracted_artifact.page_number,
-            text=extracted_artifact.text,
-            artifact_type=extracted_artifact.artifact_type,
-            matched_data=matched_data,
-            matched_data_type=matched_data_type
-        )
-    
-    def to_dict(self):
-        return {
-            "page_number": self.page_number,
-            "text": self.text,
-            "artifact_type": self.artifact_type.value,
-            "matched_data": self.matched_data,
-            "matched_data_type": self.matched_data_type
-        }
-    
 
 def extract_text_from_pdf(pdf: pdfplumber.PDF):
     try:
@@ -72,7 +21,7 @@ def extract_text_from_pdf(pdf: pdfplumber.PDF):
         logging.error(f"Error extracting text from PDF: {e}", exc_info=True)
         raise RuntimeError(f"Failed to extract text from PDF: {pdf}") from e
     
-def _extract_image_data_from_pdf_image(image) -> Image.Image:
+def _extract_image_data_from_pdf_image(image: dict) -> Image.Image:
     attrs = image['stream'].attrs
     data = image['stream'].get_data()
 
@@ -127,7 +76,7 @@ def extract_pii(text: str):
             if match:
                 yield (key, match)
 
-async def _process_pdf(pdf_path: str):
+async def process_pdf(pdf_path: str) -> ScannedPDF:
     """ Processes a PDF file to extract text and images, yielding PII data found in the text.
     
     Args:
@@ -135,11 +84,18 @@ async def _process_pdf(pdf_path: str):
     Yields:
         PossibleArtifactFinding: An object containing the page number, extracted text, and artifact type.
     """
+    scanned_pdf = ScannedPDF(pdf_path)
+    findings = []
     with pdfplumber.open(pdf_path) as pdf:
         if not pdf.pages:
             logging.error(f"No pages found in PDF: {pdf_path}")
             raise StopAsyncIteration(f"No pages found in PDF: {pdf_path}")
         
+        scanned_pdf.author = pdf.metadata.get('Author', '')
+        scanned_pdf.title = pdf.metadata.get('Title', '')
+        scanned_pdf.subject = pdf.metadata.get('Subject', '')
+        scanned_pdf.keywords = pdf.metadata.get('Keywords', '')
+
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
         text = extract_text_from_pdf(pdf)
         images = extract_images_from_pdf(pdf)
@@ -147,29 +103,14 @@ async def _process_pdf(pdf_path: str):
             if artifact.text:
                 for data_type, data in extract_pii(artifact.text):
                     logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in text of PDF {pdf_path}")
-                    yield PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type)
+                    findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
 
         async for artifact in images:
             if artifact.text:
                 for data_type, data in extract_pii(" ".join(artifact.text)):
                     logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in image of PDF {pdf_path}")
-                    yield PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type)
+                    findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
+    
+    scanned_pdf.add_findings(findings)
+    return scanned_pdf
 
-async def process_pdf_collection(pdf_path: list[str]) -> list[PossibleArtifactFinding]:
-    """Processes a collection of PDF files to extract text and images, yielding PII data found in the text.
-    
-    Args:
-        pdf_path (list[str]): A list of paths to the PDF files.
-    
-    Returns:
-        list[PossibleArtifactFinding]: A list of PossibleArtifactFinding objects containing the page number, extracted text, and artifact type.
-    """
-    findings = []
-    for path in pdf_path:
-        try:
-            async for finding in _process_pdf(path):
-                findings.append(finding)
-        except Exception as e:
-            logging.error(f"Error processing PDF {path}: {e}", exc_info=True)
-    
-    return findings
