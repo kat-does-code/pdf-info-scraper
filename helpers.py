@@ -16,7 +16,7 @@ def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
     try:
         for page in pdf.pages:
             last_page_number = page.page_number
-            for rect in page.objects["rect"]:
+            for rect in page.objects.get("rect", []):
                 captured_text = ""
                 # Check if the rectangle is filled
                 if not rect.get('fill', None) == True:
@@ -31,7 +31,7 @@ def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
 
                 # Capture text inside the rectangle
                 x0, y0, x1, y1 = rect['x0'], rect['y0'], rect['x1'], rect['y1']
-                for char in page.objects["char"]:
+                for char in page.objects.get("char", []):
                     if (
                         char['x0'] >= x0 and char['x1'] <= x1 and
                         char['y0'] >= y0 and char['y1'] <= y1
@@ -52,7 +52,7 @@ def extract_white_text_from_pdf(pdf: pdfplumber.PDF):
     try:
         for page in pdf.pages:
             last_page_number = page.page_number
-            for obj in page.objects["char"]:
+            for obj in page.objects.get("char", []):
                 if (
                     obj['object_type'] == 'char' and
                     all(0.8 <= c <= 1.0 for c in obj.get('non_stroking_color', []))
