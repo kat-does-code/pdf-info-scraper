@@ -20,4 +20,4 @@ options:
   ```
 
 ### Finding text
-There are default regex patterns implemented in [regexes.py](./regexes.py), which can be edited to the user's preferences. All regexes ought to be raw strings in python format.
+The tool finds white text, black text with black highlighter, and [regexes.py](./regexes.py) that can be defined by the user. All regexes ought to be raw strings in python format.
