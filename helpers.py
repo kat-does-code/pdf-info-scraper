@@ -120,7 +120,7 @@ async def extract_images_from_pdf(pdf: pdfplumber.PDF):
         raise RuntimeError(f"Failed to extract images from PDF: {pdf.path.as_posix()}") from e
     
 
-def extract_pii(text):
+def extract_pii(text: str):
     for key, value in PATTERNS.items():
         pii_match = re.findall(value, text)
         for match in pii_match:
