@@ -39,6 +39,13 @@ def _extract_image_data_from_pdf_image(image: dict) -> Image.Image:
     elif  "FlateDecode" in str(filter_):
         # Assume RGB or grayscale (add more checks if needed)
         mode = "L" if "DeviceGray" in resolve(color_space) else "RGB"
+        expected_len = width * height if mode == "L" else width * height * 3
+        if len(data) < expected_len:
+            # Pad with zeros if data is too short
+            data += b'\x00' * (expected_len - len(data))
+        elif len(data) > expected_len:
+            # Truncate if data is too long
+            data = data[:expected_len]
         return Image.frombytes(mode, (width, height), data)
 
     elif "JPXDecode" in str(filter_):
@@ -49,13 +56,17 @@ def _extract_image_data_from_pdf_image(image: dict) -> Image.Image:
         raise NotImplementedError(f"Unsupported filter: {filter_}")
 
 async def extract_images_from_pdf(pdf: pdfplumber.PDF):
+    last_page_number = -1
+    last_image = None
     try:
         reader = easyocr.Reader(['en', 'nl'], gpu=True)
         logging.info(f"Extracting images from PDF: {pdf.path.as_posix()} with {len(pdf.pages)} pages")
         for page in pdf.pages:
+            last_page_number = page.page_number
             for img in page.images:
                 buffer = io.BytesIO()
                 image = _extract_image_data_from_pdf_image(img)
+                last_image = image
                 image.save(buffer, format="PNG")
                 image_text = reader.readtext(buffer.getvalue(), detail=0)
                 yield ExtractedArtifact(
@@ -65,8 +76,12 @@ async def extract_images_from_pdf(pdf: pdfplumber.PDF):
                     description=f"Image on page {page.page_number} with size {img['width']}x{img['height']}"
                 )
     except Exception as e:
-        logging.error(f"Error extracting images from PDF: {e}", exc_info=True)
-        raise RuntimeError(f"Failed to extract images from PDF: {pdf.path.as_posix()}") from e
+        if last_image:
+            last_image.save(f"image_error_{pdf.path.stem}.png", format="PNG")
+
+        errmsg = f"Error extracting images from PDF: {pdf.path.as_posix()} at page {last_page_number}"
+        logging.error(errmsg, exc_info=True)
+        raise RuntimeError(errmsg) from e
     
 
 def extract_pii(text: str):
