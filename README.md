@@ -7,7 +7,7 @@ Ensure you have flox installed, clone this repo and activate from the working di
 ```bash
 usage: main.py [-h] [-o OUTPUT_DIR] [--debug] files_or_directory
 
-A simple command-line tool.
+A simple command-line tool for extracting data from PDF files using regex patterns.
 
 positional arguments:
   files_or_directory    A path to a PDF file or a directory containing them.

@@ -9,7 +9,7 @@ import json
 logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="A simple command-line tool.")
+    parser = argparse.ArgumentParser(description="A simple command-line tool for extracting data from PDF files using regex patterns.")
     parser.add_argument("files_or_directory", type=str, help="A path to a PDF file or a directory containing them.")
     parser.add_argument("-o", "--output_dir", type=str, default="output", help="Directory to save output files (default: 'output').", required=False)
     parser.add_argument("--debug", action="store_true", help="Enable debug mode for more verbose output.")
