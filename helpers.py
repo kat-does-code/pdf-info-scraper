@@ -11,6 +11,35 @@ from regexes import re_objects
 
 PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
 
+def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
+    last_page_number = -1
+    try:
+        for page in pdf.pages:
+            last_page_number = page.page_number
+            for rect in page.objects["rect"]:
+                captured_text = ""
+                # Check if the rectangle is filled
+                if not rect.get('fill', None) == True:
+                    continue
+
+                # Capture text inside the rectangle
+                x0, y0, x1, y1 = rect['x0'], rect['y0'], rect['x1'], rect['y1']
+                width,height = rect['width'], rect['height']
+                for char in page.objects["char"]:
+                    if (
+                        char['x0'] >= x0 and char['x1'] <= x1 and
+                        char['y0'] >= y0 and char['y1'] <= y1
+                    ):
+                        captured_text += char['text']
+                    elif captured_text:
+                        logging.debug(f"Captured text inside filled rectangle on page {page.page_number}: {captured_text}")
+                        yield ExtractedArtifact(page.page_number, captured_text, artifact_type=ArtifactType.FILLED_RECTANGLE)
+                        captured_text = ""
+    except Exception as e:
+        errmsg = f"Error extracting text inside filled rectangles on page {last_page_number} from PDF: {pdf.path.as_posix()}"
+        logging.error(errmsg, exc_info=True)
+        raise RuntimeError(errmsg) from e
+
 def extract_white_text_from_pdf(pdf: pdfplumber.PDF):
     last_page_number = -1
     captured_white_text = ""
@@ -137,6 +166,8 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
         text = extract_text_from_pdf(pdf)
         images = extract_images_from_pdf(pdf)
         white_text = extract_white_text_from_pdf(pdf)
+        masked_text = extract_text_inside_filled_rectangles(pdf)
+
         for artifact in text:
             if artifact.text:
                 for data_type, data in extract_pii(artifact.text):
@@ -147,6 +178,11 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
             if artifact.text:
                 logging.debug(f"Extracted white text from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
                 findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "white_text"))
+
+        for artifact in masked_text:
+            if artifact.text:
+                logging.debug(f"Extracted text inside filled rectangle from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
+                findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "filled_rectangle"))
 
         async for artifact in images:
             if artifact.text:

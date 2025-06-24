@@ -8,6 +8,7 @@ class ArtifactType(enum.Enum):
     REGULAR_TEXT = "text"
     IMAGE = "image"
     WHITE_TEXT = "white_text"
+    FILLED_RECTANGLE = "filled_rectangle"
 
 class ExtractedArtifact:
     def __init__(self, page_number, text, object_ref=None, description="", artifact_type: ArtifactType = ArtifactType.UNSPECIFIED):

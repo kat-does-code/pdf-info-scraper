@@ -1,6 +1,6 @@
 [
     {
-        "path": "test/data/nos.pdf",
+        "path": "test/data/testdoc.pdf",
         "author": "",
         "title": "",
         "subject": "",
@@ -8,77 +8,17 @@
         "findings": [
             {
                 "page_number": 1,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nNieuws Sport Live\nNAVO-top\nNOS Nieuws \u2022 Gisteren, 12:05 \u2022 Aangepast vandaag, 10:03\nOm 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: onderzoek naar\nsabotage bij treinstoring\nVandaag komen 45 staatshoofden en regeringsleiders naar Den Haag voor de NAVO-\ntop. Om iedereen te beveiligen, is de grootste veiligheidsoperatie in de Nederlandse\ngeschiedenis opgezet.\n\u2022\nDe NOS maakt vandaag en morgen vrijwel de hele dag extra uitzendingen. Die zijn\nallemaal te volgen via onze livestream op NOS.nl, in onze app en in de tv-app NOS\nLive .\n\u2022\nHeb je vragen over de NAVO-top? Stel ze via vraag@nos.nl. Dan beantwoorden we\nze in de livestreams.\n\u2022\nIn de collectie 'NAVO-top in Nederland' zijn meer artikelen, video's en specials te\nvinden.\n\u2022\nOm 10.00 uur spreekt Rutte in het Public Forum. Daarnaast is er het Defense\nIndustry Forum waar het bedrijfsleven de defensieministers ontmoeten en\nvergaderingen plaatsvinden.\n\u2022\nDe regeringsleiders gaan vanavond op bezoek bij koning Willem-Alexander en\nkoningin M\u00e1xima voor een diner.\n11:04\nKabinet komt met 175 miljoen euro extra voor Oekra\u00efne\nDemissionair minister Brekelmans van Defensie heeft op de eerste dag van de top\nbekendgemaakt dat het kabinet nog eens 175 miljoen euro extra uitrekt voor Oekra\u00efne.\nDaarvan gaat 80 miljoen euro naar de aanschaf van nieuwe drones. De rest van het\ngeld is onder meer bedoeld voor radarsystemen.\nBrekelmans noemt de nieuwe toegezegde steun cruciaal omdat Oekra\u00efne nog dagelijks\nwordt bestookt door Rusland en er nog hard wordt gevochten aan het front in het oosten\nvan het land.\n1 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": [
-                    "",
-                    "",
-                    "",
-                    ""
-                ],
-                "matched_data_type": "email"
+                "text": "This text is white which means it might be harder to \ufb01nd out that there is text here. ",
+                "artifact_type": "white_text",
+                "matched_data": "This text is white which means it might be harder to \ufb01nd out that there is text here. ",
+                "matched_data_type": "white_text"
             },
             {
-                "page_number": 3,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\ndoor Rusland. Als er wel serieuze gesprekken komen en er wordt een akkoord gesloten,\ndan moet ervoor gezorgd worden dat het akkoord langdurig is.\nOok benadrukte Rutte hoe sterk het bondgenootschap is en dat iedereen \u00e9\u00e9n is binnen\nde NAVO.\n10:33\nNu in de livestream: Q&A met Kysia Hekster en Mart de Kruif\nCorrespondent Kysia Hekster en oud-commandant landstrijdkrachten Mart de Kruijf\nbeantwoorden vragen van kijkers over de NAVO-top. Heb je ook een vraag? Stuur een\nmail naar vraag@nos.nl.\nKlik hier om mee te kijken.\nNOS\n10:01\nRutte hamert op versterking NAVO: 'Vrede door krachtig te zijn'\nSecretaris-generaal Mark Rutte heeft de NAVO-top officieel geopend in het public\nforum. Hij benadrukt daar net als gisteren dat Rusland de grootste dreiging is voor de\nalliantie.\n3 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": [
-                    "",
-                    "",
-                    "",
-                    ""
-                ],
-                "matched_data_type": "email"
-            },
-            {
-                "page_number": 5,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nANP\n09:31\nFeiten en weetjes over de NAVO-top\nNederland organiseert voor het eerst sinds de NAVO werd opgericht in 1949 de top. Het\nis de grootste veiligheidsoperatie ooit in Nederland en die brengt veel opvallende cijfers\nen wetenswaardigheden met zich mee.\nVijftien weetjes over de NAVO-top: van goede akoestiek tot ingevlogen\nkoks\n09:14\nVan Weel: we onderzoeken of er sprake is van sabotage bij treinstoring\nOp dit moment wordt onderzocht of de treinstoring door brand in kabels langs de rails te\nmaken heeft met sabotage. Dat zegt demissionair minister van Justitie en Veiligheid Van\nWeel in het Public Forum. \"Het zou sabotage kunnen zijn. Dat is een van de dingen die\nwe nu onderzoeken.\"\n\"Het zou een activistische groep kunnen zijn. Het zou een andere staat kunnen zijn. Het\n5 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": "1949 de",
-                "matched_data_type": "postcode"
-            },
-            {
-                "page_number": 13,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nANP\nBrekelmans bij de steundemonstratie\nGisteren, 17:19\nMorgen toespraak van Zelensky in Tweede Kamer\nDe Oekra\u00efense president Zelensky spreekt morgen de Eerste en Tweede Kamer toe. Hij\nis de komende dagen in Nederland in verband met de NAVO-top in Den Haag. Een\nmeerderheid van de Tweede Kamer heeft hem uitgenodigd. De toespraak in de Tweede\nKamer begint rond 16.00 uur.\nHet wordt de derde keer dat Zelensky de Nederlandse parlementari\u00ebrs toespreekt. De\neerste keer was in maart 2022 via een videoverbinding, een paar weken na de\nRussische inval in Oekra\u00efne. In mei 2023 kwam Zelensky naar de Eerste Kamer voor\neen gezamenlijke vergadering van de Staten-Generaal.\n13 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": "2022 vi",
-                "matched_data_type": "postcode"
-            },
-            {
-                "page_number": 13,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nANP\nBrekelmans bij de steundemonstratie\nGisteren, 17:19\nMorgen toespraak van Zelensky in Tweede Kamer\nDe Oekra\u00efense president Zelensky spreekt morgen de Eerste en Tweede Kamer toe. Hij\nis de komende dagen in Nederland in verband met de NAVO-top in Den Haag. Een\nmeerderheid van de Tweede Kamer heeft hem uitgenodigd. De toespraak in de Tweede\nKamer begint rond 16.00 uur.\nHet wordt de derde keer dat Zelensky de Nederlandse parlementari\u00ebrs toespreekt. De\neerste keer was in maart 2022 via een videoverbinding, een paar weken na de\nRussische inval in Oekra\u00efne. In mei 2023 kwam Zelensky naar de Eerste Kamer voor\neen gezamenlijke vergadering van de Staten-Generaal.\n13 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": "2023 kw",
-                "matched_data_type": "postcode"
-            },
-            {
-                "page_number": 14,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nANP\nIn maart 2022 sprak Zelensky de Tweede Kamer toe via een videoverbinding\nGisteren, 17:15\nTwee journalisten onder arrestanten bij blokkadepoging van Extinction\nRebellion bij A44\nDe politie heeft twee journalisten van het Leidsch Dagblad aangehouden die verslag\ndeden van de blokkadepoging van Extinction Rebellion bij de A44 bij Abbenes. De\ndemonstranten demonstreerden in een wei naast de afgesloten snelweg en probeerden\ntevergeefs via de sloot op de A44 te komen.\nTijdens de demonstratie gaven agenten de aanwezige verslaggevers de opdracht te\nvertrekken, anders zouden ze worden gearresteerd.\nDe Nederlandse Vereniging van Journalisten (NVJ) en meldpunt PersVeilig zijn niet te\nspreken over de gang van zaken. Dit is \"precies zoals we het niet willen\", zegt\nalgemeen secretaris Thomas Bruning van de NVJ. \"Journalisten moeten hun werk\nkunnen doen.\" PersVeilig zegt dat de politie journalisten ongemoeid moet laten \"als ze\nkunnen laten zien dat zij professioneel journalist zijn\".\nIn totaal heeft de politie 27 mensen aangehouden bij de demonstratie. Iedereen is\ninmiddels vrijgelaten.\nLees meer in dit artikel:\n14 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": "2022 sp",
-                "matched_data_type": "postcode"
-            },
-            {
-                "page_number": 20,
-                "text": "Om 10.00 uur offici\u00eble opening Rutte \u2022 Van Weel: ond... https://nos.nl/liveblog/2572170-om-10-00-uur-officiele...\nScholen in Den Haag dicht vanwege belangrijke vergadering\nGisteren, 12:42\nPro-Russische activisten claimen cyberaanvallen op gemeentewebsites\nEen pro-Russische activistengroep zegt cyberaanvallen te hebben uitgevoerd op de\nwebsites van verschillende Nederlandse provincies en gemeenten. Daardoor zijn die\nsites moeilijker bereikbaar. Het gaat om NoName05716, die al vaker ddos-aanvallen\nuitvoerde. De groep is actief sinds Rusland in 2022 Oekra\u00efne binnenviel.\nIn aanloop naar de NAVO-top in Den Haag is veel gewaarschuwd voor dit soort\nverstoringen en andere cyberaanvallen. Ook de vorige toppen in Washington en Vilnius\nkampten hiermee.\nMeer dan vijftig Nederlandse websites waren eerder dit jaar doelwit van ddos-aanvallen\nvan de activistengroep:\nRuim vijftig websites Nederland deze week doelwit pro-Russische\nhackersgroep\nGisteren, 11:59\n20 of 24 6/24/25, 11:21\n",
-                "artifact_type": "text",
-                "matched_data": "2022 Oe",
-                "matched_data_type": "postcode"
-            },
-            {
-                "page_number": 4,
-                "text": [
-                    "The Hague",
-                    "NATO",
-                    "La Haye",
-                    "OIAN",
-                    "24-25 V12025",
-                    "Summit | sommor",
-                    "NATO Public Forum"
-                ],
-                "artifact_type": "image",
-                "matched_data": "2025 Su",
-                "matched_data_type": "postcode"
+                "page_number": 1,
+                "text": "Also, if you mask text using some highlighter, it doesn\u2019t mean that there isn\u2019t any text her",
+                "artifact_type": "filled_rectangle",
+                "matched_data": "Also, if you mask text using some highlighter, it doesn\u2019t mean that there isn\u2019t any text her",
+                "matched_data_type": "filled_rectangle"
             }
         ]
     }
