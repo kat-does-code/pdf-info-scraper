@@ -1,7 +1,8 @@
 import io
+import json
 import logging
 from pydoc import resolve
-from classes import ExtractedArtifact, PossibleArtifactFinding, ScannedPDF
+from classes import ExtractedArtifact, PossibleArtifactFinding, ScannedPDF, ArtifactType
 import pdfplumber 
 import easyocr
 import re
@@ -9,6 +10,27 @@ from PIL import Image
 from regexes import re_objects
 
 PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
+
+def extract_white_text_from_pdf(pdf: pdfplumber.PDF):
+    last_page_number = -1
+    captured_white_text = ""
+    try:
+        for page in pdf.pages:
+            last_page_number = page.page_number
+            for obj in page.objects["char"]:
+                if (
+                    obj['object_type'] == 'char' and
+                    all(0.8 <= c <= 1.0 for c in obj.get('non_stroking_color', []))
+                ):
+                    captured_white_text += obj['text']
+                elif captured_white_text:
+                    logging.debug(f"Captured white text on page {page.page_number}: {captured_white_text}")
+                    yield ExtractedArtifact(page.page_number, captured_white_text, artifact_type=ArtifactType.WHITE_TEXT)
+                    captured_white_text = ""
+    except Exception as e:
+        errmsg = f"Error extracting white text on page {last_page_number} from PDF: {pdf.path.as_posix()}"
+        logging.error(errmsg, exc_info=True)
+        raise RuntimeError(errmsg) from e
 
 def extract_text_from_pdf(pdf: pdfplumber.PDF):
     try:
@@ -114,11 +136,17 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
         text = extract_text_from_pdf(pdf)
         images = extract_images_from_pdf(pdf)
+        white_text = extract_white_text_from_pdf(pdf)
         for artifact in text:
             if artifact.text:
                 for data_type, data in extract_pii(artifact.text):
                     logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in text of PDF {pdf_path}")
                     findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
+
+        for artifact in white_text:
+            if artifact.text:
+                logging.debug(f"Extracted white text from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
+                findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "white_text"))
 
         async for artifact in images:
             if artifact.text:

@@ -4,21 +4,27 @@ from typing import Optional
 
 
 class ArtifactType(enum.Enum):
-    TEXT = "text"
+    UNSPECIFIED = "unspecified"
+    REGULAR_TEXT = "text"
     IMAGE = "image"
+    WHITE_TEXT = "white_text"
 
 class ExtractedArtifact:
-    def __init__(self, page_number, text, object_ref=None, description=""):
+    def __init__(self, page_number, text, object_ref=None, description="", artifact_type: ArtifactType = ArtifactType.UNSPECIFIED):
         self.page_number : int = page_number
         self.text : str = text
         self.object_ref : Optional[any] = object_ref
         self.description : Optional[str] = description
 
-        match self.object_ref:
-            case None:
-                self.artifact_type = ArtifactType.TEXT
-            case _:
-                self.artifact_type = ArtifactType.IMAGE
+        if artifact_type is not ArtifactType.UNSPECIFIED:
+            self.artifact_type = artifact_type
+        else:
+            # Determine artifact type based on object_ref
+            match self.object_ref:
+                case None:
+                    self.artifact_type = ArtifactType.REGULAR_TEXT
+                case _:
+                    self.artifact_type = ArtifactType.IMAGE
 
     def __repr__(self):
         return f"ExtractedArtifact(page_number={self.page_number}, text_length={len(self.text)}, object_ref={self.object_ref}, description={self.description})"
