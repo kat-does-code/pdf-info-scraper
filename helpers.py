@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta, timezone
 import io
 import json
 import logging
@@ -10,6 +11,53 @@ from PIL import Image
 from regexes import re_objects
 
 PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
+
+
+def parse_pdf_date(pdf_date: str) -> datetime:
+    # Remove the leading "D:" if present
+    if pdf_date.startswith("D:"):
+        pdf_date = pdf_date[2:]
+
+    # Regex pattern to extract the components
+    pattern = (
+        r"(?P<year>\d{4})"
+        r"(?P<month>\d{2})?"
+        r"(?P<day>\d{2})?"
+        r"(?P<hour>\d{2})?"
+        r"(?P<minute>\d{2})?"
+        r"(?P<second>\d{2})?"
+        r"(?P<tz_sign>[+-Z])?"
+        r"(?P<tz_hour>\d{2})?'?(?P<tz_minute>\d{2})?'?"
+    )
+
+    match = re.match(pattern, pdf_date)
+    if not match:
+        raise ValueError("Invalid PDF date format")
+
+    parts = match.groupdict(default='00')  # Default all missing parts to '00'
+    
+    # Build the datetime object
+    dt = datetime(
+        int(parts['year']),
+        int(parts['month']),
+        int(parts['day']),
+        int(parts['hour']),
+        int(parts['minute']),
+        int(parts['second']),
+    )
+
+    # Handle timezone
+    if parts['tz_sign'] == 'Z' or parts['tz_sign'] is None:
+        tz = timezone.utc
+    else:
+        offset_hours = int(parts['tz_hour'])
+        offset_minutes = int(parts['tz_minute'])
+        delta = timedelta(hours=offset_hours, minutes=offset_minutes)
+        if parts['tz_sign'] == '-':
+            delta = -delta
+        tz = timezone(delta)
+
+    return dt.replace(tzinfo=tz)
 
 def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
     last_page_number = -1
@@ -77,7 +125,7 @@ def extract_text_from_pdf(pdf: pdfplumber.PDF):
     except Exception as e:
         logging.error(f"Error extracting text from PDF: {e}", exc_info=True)
         raise RuntimeError(f"Failed to extract text from PDF: {pdf}") from e
-    
+
 def _extract_image_data_from_pdf_image(image: dict) -> Image.Image:
     attrs = image['stream'].attrs
     data = image['stream'].get_data()
@@ -139,7 +187,7 @@ async def extract_images_from_pdf(pdf: pdfplumber.PDF):
         errmsg = f"Error extracting images from PDF: {pdf.path.as_posix()} at page {last_page_number}"
         logging.error(errmsg, exc_info=True)
         raise RuntimeError(errmsg) from e
-    
+
 
 def extract_pii(text: str):
     for key, value in PATTERNS.items():
@@ -167,6 +215,13 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
         scanned_pdf.title = pdf.metadata.get('Title', '')
         scanned_pdf.subject = pdf.metadata.get('Subject', '')
         scanned_pdf.keywords = pdf.metadata.get('Keywords', '')
+        scanned_pdf.producer = pdf.metadata.get('Producer', '')
+        scanned_pdf.creator = pdf.metadata.get('Creator', '')
+
+        creation_date_pdfstr = pdf.metadata.get('CreationDate', '')
+        modification_date_pdfstr = pdf.metadata.get('ModDate', '')
+        scanned_pdf.creation_date = parse_pdf_date(creation_date_pdfstr)
+        scanned_pdf.modification_date = parse_pdf_date(modification_date_pdfstr)
 
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
         text = extract_text_from_pdf(pdf)

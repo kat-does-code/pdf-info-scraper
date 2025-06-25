@@ -1,4 +1,5 @@
 
+from datetime import datetime
 import enum
 from typing import Optional
 
@@ -58,12 +59,16 @@ class PossibleArtifactFinding():
         }
     
 class ScannedPDF:
-    def __init__(self, path: str, author: str = "", title: str = "", subject: str = "", keywords: str = ""):
+    def __init__(self, path: str, author: str = "", title: str = "", subject: str = "", keywords: str = "", producer: str = "", creator: str = "", creation_date : datetime = None, modification_date : datetime = None):
         self.path: str = path
         self.author: str = author
         self.title: str = title
         self.subject: str = subject
         self.keywords: str = keywords
+        self.producer: str = producer
+        self.creator: str = creator
+        self.creation_date : datetime = creation_date
+        self.modification_date : datetime = modification_date
         self.findings : list[PossibleArtifactFinding] = []
 
     def add_findings(self, findings: list[PossibleArtifactFinding]):
@@ -76,5 +81,9 @@ class ScannedPDF:
             "title": self.title,
             "subject": self.subject,
             "keywords": self.keywords,
+            "creation_date": self.creation_date.isoformat(),
+            "modification_date": self.modification_date.isoformat(),
+            "producer": self.producer,
+            "creator": self.creator,
             "findings": [finding.to_dict() for finding in self.findings]
         }
