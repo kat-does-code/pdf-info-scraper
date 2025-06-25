@@ -67,8 +67,8 @@ class ScannedPDF:
         self.keywords: str = keywords
         self.producer: str = producer
         self.creator: str = creator
-        self.creation_date : datetime = creation_date
-        self.modification_date : datetime = modification_date
+        self.creation_date : Optional[datetime] = creation_date
+        self.modification_date : Optional[datetime] = modification_date
         self.findings : list[PossibleArtifactFinding] = []
 
     def add_findings(self, findings: list[PossibleArtifactFinding]):
@@ -81,8 +81,8 @@ class ScannedPDF:
             "title": self.title,
             "subject": self.subject,
             "keywords": self.keywords,
-            "creation_date": self.creation_date.isoformat(),
-            "modification_date": self.modification_date.isoformat(),
+            "creation_date": self.creation_date.isoformat() if self.creation_date else "",
+            "modification_date": self.modification_date.isoformat() if self.modification_date else "",
             "producer": self.producer,
             "creator": self.creator,
             "findings": [finding.to_dict() for finding in self.findings]

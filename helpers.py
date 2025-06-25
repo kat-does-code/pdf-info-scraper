@@ -14,6 +14,9 @@ PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
 
 
 def parse_pdf_date(pdf_date: str) -> datetime:
+    if not pdf_date:
+        return None
+
     # Remove the leading "D:" if present
     if pdf_date.startswith("D:"):
         pdf_date = pdf_date[2:]
@@ -32,7 +35,7 @@ def parse_pdf_date(pdf_date: str) -> datetime:
 
     match = re.match(pattern, pdf_date)
     if not match:
-        raise ValueError("Invalid PDF date format")
+        raise ValueError(f"Invalid PDF date format: {pdf_date}")
 
     parts = match.groupdict(default='00')  # Default all missing parts to '00'
     
