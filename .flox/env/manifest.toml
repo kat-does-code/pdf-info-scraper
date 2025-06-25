@@ -20,6 +20,7 @@ pdfplumber.pkg-path = "python312Packages.pdfplumber"
 jupyter.pkg-path = "python312Packages.jupyter"
 easyocr.pkg-path = "python312Packages.easyocr"
 imagehash.pkg-path = "python312Packages.imagehash"
+debugpy.pkg-path = "python312Packages.debugpy"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 

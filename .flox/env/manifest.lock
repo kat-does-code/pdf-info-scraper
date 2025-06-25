@@ -3,6 +3,9 @@
   "manifest": {
     "version": 1,
     "install": {
+      "debugpy": {
+        "pkg-path": "python312Packages.debugpy"
+      },
       "easyocr": {
         "pkg-path": "python312Packages.easyocr"
       },
@@ -36,6 +39,126 @@
     }
   },
   "packages": [
+    {
+      "attr_path": "python312Packages.debugpy",
+      "broken": false,
+      "derivation": "/nix/store/ixjcfr52ykmpy6jyvs7533ywp16xvxgz-python3.12-debugpy-1.8.14.drv",
+      "description": "Implementation of the Debug Adapter Protocol for Python",
+      "install_id": "debugpy",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-debugpy-1.8.14",
+      "pname": "debugpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:26.198832Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.8.14",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/vipbkrsf5f6sswcdcgk39cbxx0sz533r-python3.12-debugpy-1.8.14-dist",
+        "out": "/nix/store/k3y724shq8v5pw1z34fmi9hi5biknwh7-python3.12-debugpy-1.8.14"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.debugpy",
+      "broken": false,
+      "derivation": "/nix/store/k3a55n26s6q5pp1ghlrgvz1agf48wjw2-python3.12-debugpy-1.8.14.drv",
+      "description": "Implementation of the Debug Adapter Protocol for Python",
+      "install_id": "debugpy",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-debugpy-1.8.14",
+      "pname": "debugpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:12.785706Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.8.14",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/d7nqw7kmv0c0mfmm3mf63skz7hffmhsd-python3.12-debugpy-1.8.14-dist",
+        "out": "/nix/store/z88xsjm0ybnwkra0dsq97qymw63yxd1x-python3.12-debugpy-1.8.14"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.debugpy",
+      "broken": false,
+      "derivation": "/nix/store/20m0zc5nflnll3pnnr1jcklpmygxqzqa-python3.12-debugpy-1.8.14.drv",
+      "description": "Implementation of the Debug Adapter Protocol for Python",
+      "install_id": "debugpy",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-debugpy-1.8.14",
+      "pname": "debugpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:33.730620Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.8.14",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/9dg15cd267m9jg3mhy79c502v35yv9qv-python3.12-debugpy-1.8.14-dist",
+        "out": "/nix/store/4l9j9594va36dq77cvv7wxxzdj7vpdqw-python3.12-debugpy-1.8.14"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.debugpy",
+      "broken": false,
+      "derivation": "/nix/store/likq5gcbgc197zxhaj64zs1cbr42wkrh-python3.12-debugpy-1.8.14.drv",
+      "description": "Implementation of the Debug Adapter Protocol for Python",
+      "install_id": "debugpy",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-debugpy-1.8.14",
+      "pname": "debugpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:55.772026Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.8.14",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/vbrxs0vh10k27ng9g1z7dwqncc1z6mc7-python3.12-debugpy-1.8.14-dist",
+        "out": "/nix/store/6p8g2mi9bpx582a80jr9a5x7604k3ql5-python3.12-debugpy-1.8.14"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "python312Packages.easyocr",
       "broken": false,

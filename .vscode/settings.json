@@ -7,5 +7,7 @@
     "python.analysis.extraPaths": [
         ".flox/run/aarch64-darwin.pdf-info-scraper.dev/lib/python3.12/site-packages",
         ".flox/run/aarch64-darwin.pdf-info-scraper.run/lib/python3.12/site-packages"
-    ]
+    ],
+    "python.envFile": "",
+    "python.terminal.activateEnvInCurrentTerminal": false
 }
