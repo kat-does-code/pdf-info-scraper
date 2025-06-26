@@ -1,4 +1,5 @@
 test/data/nda
+output/results.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
