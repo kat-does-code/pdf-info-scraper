@@ -221,7 +221,7 @@ async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
     """
     scanned_pdf = ScannedPDF(pdf_path.as_posix())
     findings = []
-    with pdfplumber.open(pdf_path) as pdf:
+    with pdfplumber.open(scanned_pdf.path) as pdf:
         if not pdf.pages:
             logging.error(f"No pages found in PDF: {pdf_path}")
             raise StopAsyncIteration(f"No pages found in PDF: {pdf_path}")
