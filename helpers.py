@@ -64,34 +64,45 @@ def parse_pdf_date(pdf_date: str) -> datetime:
 
 def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
     last_page_number = -1
+    last_y_offset = -1
     try:
         for page in pdf.pages:
             last_page_number = page.page_number
+            captured_text = ""
             for rect in page.objects.get("rect", []):
-                captured_text = ""
+                # Capture rectangle boundaries
+                x0, y0, x1, y1 = round(rect['x0']), round(rect['y0']), round(rect['x1']), round(rect['y1'])
+                if last_y_offset != y0:
+                    if captured_text:
+                        logging.debug(f"Captured text inside filled rectangle on page {page.page_number} at offset{last_y_offset}: {captured_text}")
+                        yield ExtractedArtifact(page.page_number, captured_text, artifact_type=ArtifactType.FILLED_RECTANGLE)
+                        captured_text = ""
+                    # indent
+                    last_y_offset = y0
+
+
                 # Check if the rectangle is filled
                 if not rect.get('fill', None) == True:
                     continue
 
                 # check if the rectangle has a dark color
-                non_stroking_color = rect.get('non_stroking_color', [])
-                if isinstance(non_stroking_color, float):
-                    non_stroking_color = [non_stroking_color]
-                if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
-                    continue
+                # non_stroking_color = rect.get('non_stroking_color', [])
+                # if isinstance(non_stroking_color, float):
+                #     non_stroking_color = [non_stroking_color]
+                # if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
+                #     continue
 
-                # Capture text inside the rectangle
-                x0, y0, x1, y1 = rect['x0'], rect['y0'], rect['x1'], rect['y1']
-                for char in page.objects.get("char", []):
+                for i, char in enumerate(page.objects.get("char", [])):
                     if (
-                        char['x0'] >= x0 and char['x1'] <= x1 and
-                        char['y0'] >= y0 and char['y1'] <= y1
+                        round(char['x0']) >= x0 and round(char['x1']) <= x1 and
+                        round(char['y0']) >= y0 and round(char['y1']) <= y1
                     ):
                         captured_text += char['text']
-                    elif captured_text:
-                        logging.debug(f"Captured text inside filled rectangle on page {page.page_number}: {captured_text}")
-                        yield ExtractedArtifact(page.page_number, captured_text, artifact_type=ArtifactType.FILLED_RECTANGLE)
-                        captured_text = ""
+            
+            # flush last bit of captured text
+            if captured_text:
+                logging.debug(f"Captured text inside filled rectangle on page {page.page_number} at offset{last_y_offset}: {captured_text}")
+                yield ExtractedArtifact(page.page_number, captured_text, artifact_type=ArtifactType.FILLED_RECTANGLE)
     except Exception as e:
         errmsg = f"Error extracting text inside filled rectangles on page {last_page_number} from PDF: {pdf.path.as_posix()}"
         logging.error(errmsg, exc_info=True)
@@ -223,8 +234,11 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
 
         creation_date_pdfstr = pdf.metadata.get('CreationDate', '')
         modification_date_pdfstr = pdf.metadata.get('ModDate', '')
-        scanned_pdf.creation_date = parse_pdf_date(creation_date_pdfstr)
-        scanned_pdf.modification_date = parse_pdf_date(modification_date_pdfstr)
+        try:
+            scanned_pdf.creation_date = parse_pdf_date(creation_date_pdfstr)
+            scanned_pdf.modification_date = parse_pdf_date(modification_date_pdfstr)
+        except Exception as e:
+            pass
 
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
         text = extract_text_from_pdf(pdf)
