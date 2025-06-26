@@ -6,7 +6,7 @@
         {
             "label": "launch debugpy from flox",
             "type": "shell",
-            "command": "flox activate -- bash -c 'python -m debugpy --listen 5678 --wait-for-client main.py test/data/nda'",
+            "command": "flox activate -- bash -c 'python -m debugpy --listen 5678 --wait-for-client main.py --no-regex test/data/nos.pdf test/data/nda'",
             "problemMatcher": [
             ],
             "isBackground": true

@@ -2,8 +2,9 @@ from datetime import datetime, timedelta, timezone
 import io
 import json
 import logging
+from pathlib import Path
 from pydoc import resolve
-from classes import ExtractedArtifact, PossibleArtifactFinding, ScannedPDF, ArtifactType
+from classes import ExecutionConfiguration, ExtractedArtifact, PossibleArtifactFinding, ScannedPDF, ArtifactType
 import pdfplumber 
 import easyocr
 import re
@@ -86,11 +87,11 @@ def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
                     continue
 
                 # check if the rectangle has a dark color
-                # non_stroking_color = rect.get('non_stroking_color', [])
-                # if isinstance(non_stroking_color, float):
-                #     non_stroking_color = [non_stroking_color]
-                # if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
-                #     continue
+                non_stroking_color = rect.get('non_stroking_color', [])
+                if isinstance(non_stroking_color, float):
+                    non_stroking_color = [non_stroking_color]
+                if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
+                    continue
 
                 for i, char in enumerate(page.objects.get("char", [])):
                     if (
@@ -210,7 +211,7 @@ def extract_pii(text: str):
             if match:
                 yield (key, match)
 
-async def process_pdf(pdf_path: str) -> ScannedPDF:
+async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
     """ Processes a PDF file to extract text and images, yielding PII data found in the text.
     
     Args:
@@ -218,7 +219,7 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
     Yields:
         PossibleArtifactFinding: An object containing the page number, extracted text, and artifact type.
     """
-    scanned_pdf = ScannedPDF(pdf_path)
+    scanned_pdf = ScannedPDF(pdf_path.as_posix())
     findings = []
     with pdfplumber.open(pdf_path) as pdf:
         if not pdf.pages:
@@ -241,16 +242,8 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
             pass
 
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
-        text = extract_text_from_pdf(pdf)
-        images = extract_images_from_pdf(pdf)
         white_text = extract_white_text_from_pdf(pdf)
         masked_text = extract_text_inside_filled_rectangles(pdf)
-
-        for artifact in text:
-            if artifact.text:
-                for data_type, data in extract_pii(artifact.text):
-                    logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in text of PDF {pdf_path}")
-                    findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
 
         for artifact in white_text:
             if artifact.text:
@@ -262,12 +255,23 @@ async def process_pdf(pdf_path: str) -> ScannedPDF:
                 logging.debug(f"Extracted text inside filled rectangle from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
                 findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "filled_rectangle"))
 
-        async for artifact in images:
-            if artifact.text:
-                for data_type, data in extract_pii(" ".join(artifact.text)):
-                    logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in image of PDF {pdf_path}")
-                    findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
-    
+        if do_regex:
+            text = extract_text_from_pdf(pdf)
+            images = extract_images_from_pdf(pdf)
+
+            for artifact in text:
+                if artifact.text:
+                    for data_type, data in extract_pii(artifact.text):
+                        logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in text of PDF {pdf_path}")
+                        findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
+
+            async for artifact in images:
+                if artifact.text:
+                    for data_type, data in extract_pii(" ".join(artifact.text)):
+                        logging.debug(f"Extracted {data_type}: {data} from page {artifact.page_number} in image of PDF {pdf_path}")
+                        findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, data, data_type))
+        # endof do_regex
+
     scanned_pdf.add_findings(findings)
     return scanned_pdf
 

@@ -2,7 +2,13 @@
 from datetime import datetime
 import enum
 from typing import Optional
+from pathlib import Path
 
+class ExecutionConfiguration():
+    def __init__(self, pdf_files: list[Path], output_dir:Path, do_execute_regex:bool=True):
+        self.pdf_files: list[Path] = pdf_files
+        self.output_dir: Path = output_dir
+        self.do_execute_regex: bool = do_execute_regex
 
 class ArtifactType(enum.Enum):
     UNSPECIFIED = "unspecified"
