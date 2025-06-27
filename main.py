@@ -58,8 +58,8 @@ async def run_in_thread(**kwargs):
         return None
     
 async def process_all_pdfs(config: ExecutionConfiguration):
-    tasks = [run_in_thread(pdf_path=path, do_regex=config.do_execute_regex) for path in config.pdf_files]
-    results = await asyncio.gather(*tasks)
+    tasks = [run_in_thread(pdf_path=path, do_regex=config.do_execute_regex, output_path=config.output_dir) for path in config.pdf_files]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
     return [res for res in results if res is not None]
 
 def main():

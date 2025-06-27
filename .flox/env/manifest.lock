@@ -3,6 +3,9 @@
   "manifest": {
     "version": 1,
     "install": {
+      "clang": {
+        "pkg-path": "clang"
+      },
       "debugpy": {
         "pkg-path": "python312Packages.debugpy"
       },
@@ -15,11 +18,23 @@
       "jupyter": {
         "pkg-path": "python312Packages.jupyter"
       },
+      "libtiff": {
+        "pkg-path": "libtiff"
+      },
+      "numpy": {
+        "pkg-path": "python312Packages.numpy"
+      },
       "pdfplumber": {
         "pkg-path": "python312Packages.pdfplumber"
       },
-      "python312": {
-        "pkg-path": "python312"
+      "pipx": {
+        "pkg-path": "pipx"
+      },
+      "pymupdf": {
+        "pkg-path": "python312Packages.pymupdf"
+      },
+      "python312Full": {
+        "pkg-path": "python312Full"
       }
     },
     "hook": {},
@@ -39,6 +54,122 @@
     }
   },
   "packages": [
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/l5l5gsvjqqnr4vwvg6jygqr9409jf7ml-clang-wrapper-19.1.7.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, Apache-2.0, LLVM-exception ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "clang-wrapper-19.1.7",
+      "pname": "clang",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:15.733868Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "19.1.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/cvhbqa01i5yy7xmmpqp1hbnvq7kpvgsx-clang-wrapper-19.1.7"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/yjjbzl8z4r2ya5vypj9i5yxfcn53pgsj-clang-wrapper-19.1.7.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, Apache-2.0, LLVM-exception ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "clang-wrapper-19.1.7",
+      "pname": "clang",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:54:48.244550Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "19.1.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/vp6zgsnwkqjn89lgdkizr2vpxp6zvv9m-clang-wrapper-19.1.7"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/0z1jb53aac4kr850x6zadkdnb3dhasff-clang-wrapper-19.1.7.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, Apache-2.0, LLVM-exception ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "clang-wrapper-19.1.7",
+      "pname": "clang",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:22.987158Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "19.1.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/cm1kj0v0xpsql7fww3hv7f3z930k2fnw-clang-wrapper-19.1.7"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "clang",
+      "broken": false,
+      "derivation": "/nix/store/g6xp2vv856rgg5q0lvcac2wwx6lspb6z-clang-wrapper-19.1.7.drv",
+      "description": "C language family frontend for LLVM (wrapper script)",
+      "install_id": "clang",
+      "license": "[ NCSA, Apache-2.0, LLVM-exception ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "clang-wrapper-19.1.7",
+      "pname": "clang",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:27.666684Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "19.1.7",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/fmysfy9gl5d59yir4fksi29wz10maljg-clang-wrapper-19.1.7"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "python312Packages.debugpy",
       "broken": false,
@@ -520,6 +651,266 @@
       "priority": 5
     },
     {
+      "attr_path": "libtiff",
+      "broken": false,
+      "derivation": "/nix/store/hla12ags6x1b7pm9swxrrh2qab20q3ff-libtiff-4.7.0.drv",
+      "description": "Library and utilities for working with the TIFF image file format",
+      "install_id": "libtiff",
+      "license": "libtiff",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "libtiff-4.7.0",
+      "pname": "libtiff",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:17.440883Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.7.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/93yp71yn3fgcycd7lmbsdn6zwqwmrhb6-libtiff-4.7.0-bin",
+        "dev": "/nix/store/cgvmmv0x86wkyiplywhaz1z11kq4qzka-libtiff-4.7.0-dev",
+        "dev_private": "/nix/store/ypq42iaz1xlibcazi2rfgl4zi87zsajl-libtiff-4.7.0-dev_private",
+        "doc": "/nix/store/2pn0rhzdpnll0s314svlzqrm22im01q8-libtiff-4.7.0-doc",
+        "man": "/nix/store/r4n4ziw5qya9k3bjj00yhljgsakyxlyg-libtiff-4.7.0-man",
+        "out": "/nix/store/axsc30wv5sqs7141s7qk3dj2wdwivpmw-libtiff-4.7.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "libtiff",
+      "broken": false,
+      "derivation": "/nix/store/jk2v7d5ig6z8wdwhqil1n61pzc95qfkc-libtiff-4.7.0.drv",
+      "description": "Library and utilities for working with the TIFF image file format",
+      "install_id": "libtiff",
+      "license": "libtiff",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "libtiff-4.7.0",
+      "pname": "libtiff",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:54:52.467377Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.7.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/fx91a9dd2rqn3jph5p8w82k0slgpi8db-libtiff-4.7.0-bin",
+        "dev": "/nix/store/5zls8adgslbjkp8hq9aayxjqaxaq1pip-libtiff-4.7.0-dev",
+        "dev_private": "/nix/store/g2lrk93v1jp20dmyp0fqx9vl6d9g4k8v-libtiff-4.7.0-dev_private",
+        "doc": "/nix/store/zvkf6fv0sjlph54qj607jqdr2wkg27d3-libtiff-4.7.0-doc",
+        "man": "/nix/store/90lh66xb3x165anv9fy1aiwkh7kla3gx-libtiff-4.7.0-man",
+        "out": "/nix/store/c0zq0gcqnaagz3y1z9nj37bbjry21zrq-libtiff-4.7.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "libtiff",
+      "broken": false,
+      "derivation": "/nix/store/56yjim06nypcqsid9zjrxx8zdxgygmdc-libtiff-4.7.0.drv",
+      "description": "Library and utilities for working with the TIFF image file format",
+      "install_id": "libtiff",
+      "license": "libtiff",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "libtiff-4.7.0",
+      "pname": "libtiff",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:24.733642Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.7.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/5wnzdbfx71vjynrs0n2v2989lii9yb9y-libtiff-4.7.0-bin",
+        "dev": "/nix/store/53x75pagzv2z8hz5anw8hnpfwz4fh6nh-libtiff-4.7.0-dev",
+        "dev_private": "/nix/store/2jw22q2ysks3bidzn2762yxmx2yq39hx-libtiff-4.7.0-dev_private",
+        "doc": "/nix/store/qllciwg2lrafj5y90fz82rfz16fk0jdy-libtiff-4.7.0-doc",
+        "man": "/nix/store/b25mfrxwwmv8s0fc44adqwh0lypfahbm-libtiff-4.7.0-man",
+        "out": "/nix/store/c8bvs99mhnr046dz826ik20fxfh2qis2-libtiff-4.7.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "libtiff",
+      "broken": false,
+      "derivation": "/nix/store/ry0g549lj23v3k29b7srh0qf0mndam28-libtiff-4.7.0.drv",
+      "description": "Library and utilities for working with the TIFF image file format",
+      "install_id": "libtiff",
+      "license": "libtiff",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "libtiff-4.7.0",
+      "pname": "libtiff",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:32.304286Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.7.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/drid7w6iaw4z7rqg09842lzsg0hjsb70-libtiff-4.7.0-bin",
+        "dev": "/nix/store/38czj7fra8100cxzvdp0nmqrraz5shmh-libtiff-4.7.0-dev",
+        "dev_private": "/nix/store/k8ab62w9sz4ng0s00ymfm4w59pchnhyp-libtiff-4.7.0-dev_private",
+        "doc": "/nix/store/80816224pcfxmfip510n14yafkjarkkp-libtiff-4.7.0-doc",
+        "man": "/nix/store/vl9c3b30qyad4ivr5r18jh3r10d082xb-libtiff-4.7.0-man",
+        "out": "/nix/store/qzk9gj8jdl37xqiccxa98g442byp3rrq-libtiff-4.7.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.numpy",
+      "broken": false,
+      "derivation": "/nix/store/4fzlm6xzvglza5f3cywf6i65141mv1fi-python3.12-numpy-2.2.5.drv",
+      "description": "Scientific tools for Python",
+      "install_id": "numpy",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-numpy-2.2.5",
+      "pname": "numpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:29.038863Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/b9l07p738a5vf5y3p95ndp4rxh2sykjr-python3.12-numpy-2.2.5-dist",
+        "out": "/nix/store/ghwfh1wba2grqjvh0lgxr3inlv7hk6z2-python3.12-numpy-2.2.5"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.numpy",
+      "broken": false,
+      "derivation": "/nix/store/2gccw4i2jl1gxp8vv990lsidjd1j590l-python3.12-numpy-2.2.5.drv",
+      "description": "Scientific tools for Python",
+      "install_id": "numpy",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-numpy-2.2.5",
+      "pname": "numpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:17.270866Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/cinqmzsb98qhf0ln6iy63dnfg32hwxvr-python3.12-numpy-2.2.5-dist",
+        "out": "/nix/store/bjrlh17xifwhwwfs98q5h3xbryxk99m4-python3.12-numpy-2.2.5"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.numpy",
+      "broken": false,
+      "derivation": "/nix/store/ag544a6zx2imqql0z9g4qpc94gxqibfs-python3.12-numpy-2.2.5.drv",
+      "description": "Scientific tools for Python",
+      "install_id": "numpy",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-numpy-2.2.5",
+      "pname": "numpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:36.620853Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/x9gjx5775rdl4fnicib0d85z0agrxcip-python3.12-numpy-2.2.5-dist",
+        "out": "/nix/store/fgwx9dxmwz98h1hkpqq8dxdf9bc3qn98-python3.12-numpy-2.2.5"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.numpy",
+      "broken": false,
+      "derivation": "/nix/store/hbhx31i78ni6vpjmy7lb2z4lsyxjvd71-python3.12-numpy-2.2.5.drv",
+      "description": "Scientific tools for Python",
+      "install_id": "numpy",
+      "license": "BSD-3-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-numpy-2.2.5",
+      "pname": "numpy",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:33:00.599623Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.2.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/6g0pr50ynp04b7clzryvga0b0j84zg55-python3.12-numpy-2.2.5-dist",
+        "out": "/nix/store/gcjg4a0nlrwfd0s4gs35cndspw3l94sc-python3.12-numpy-2.2.5"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
       "attr_path": "python312Packages.pdfplumber",
       "broken": false,
       "derivation": "/nix/store/zd9cs4jycdljbhbvi2vr0ci3s1f6hbxk-python3.12-pdfplumber-0.11.7.drv",
@@ -640,107 +1031,259 @@
       "priority": 5
     },
     {
-      "attr_path": "python312",
+      "attr_path": "pipx",
       "broken": false,
-      "derivation": "/nix/store/b3gcarlbbnfv6walgjbcf21ay5n609p1-python3-3.12.10.drv",
-      "description": "High-level dynamically-typed programming language",
-      "install_id": "python312",
-      "license": "Python-2.0",
+      "derivation": "/nix/store/ivwm1hbsjzxwgqrflv7c2bd0lgsflbla-python3.12-pipx-1.7.1.drv",
+      "description": "Install and run Python applications in isolated environments",
+      "install_id": "pipx",
+      "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
-      "name": "python3-3.12.10",
-      "pname": "python312",
+      "name": "pipx-1.7.1",
+      "pname": "pipx",
       "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
       "rev_count": 816272,
       "rev_date": "2025-06-17T04:31:58Z",
-      "scrape_date": "2025-06-18T00:36:24.958263Z",
+      "scrape_date": "2025-06-18T00:36:24.042827Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "python3-3.12.10",
+      "version": "1.7.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/v0vy1c59f0vf71h64caw17hzymvg0zms-python3-3.12.10"
+        "dist": "/nix/store/xi44yp3rjn1lb25bpjggxn9p9x2j0mgh-python3.12-pipx-1.7.1-dist",
+        "out": "/nix/store/3lc6wy7cr6nyk685nj1n88dxj73k896p-python3.12-pipx-1.7.1"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "python312",
+      "attr_path": "pipx",
       "broken": false,
-      "derivation": "/nix/store/255a922py8f7cs97nwazx68jiz2zl0r8-python3-3.12.10.drv",
-      "description": "High-level dynamically-typed programming language",
-      "install_id": "python312",
-      "license": "Python-2.0",
+      "derivation": "/nix/store/25zxi65mmn1r0s5s4qan7nd4y2q8pd6y-python3.12-pipx-1.7.1.drv",
+      "description": "Install and run Python applications in isolated environments",
+      "install_id": "pipx",
+      "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
-      "name": "python3-3.12.10",
-      "pname": "python312",
+      "name": "pipx-1.7.1",
+      "pname": "pipx",
       "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
       "rev_count": 816272,
       "rev_date": "2025-06-17T04:31:58Z",
-      "scrape_date": "2025-06-18T00:55:10.787692Z",
+      "scrape_date": "2025-06-18T00:55:08.648725Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "python3-3.12.10",
+      "version": "1.7.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "debug": "/nix/store/p61ablwahkxdx97pwlz29b04zpncgmvg-python3-3.12.10-debug",
-        "out": "/nix/store/rpf3admp58i0lwmsbv0y3dg7l7qqj4a9-python3-3.12.10"
+        "dist": "/nix/store/y2ns3304l7ybg4psrass6ls8g1w1mb6c-python3.12-pipx-1.7.1-dist",
+        "out": "/nix/store/nh54qlm1zlyhyvg4i3ff9cjpazvrhszq-python3.12-pipx-1.7.1"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "python312",
+      "attr_path": "pipx",
       "broken": false,
-      "derivation": "/nix/store/6bz0xjfswjawj6anvyw9mbk8fh8rd6sw-python3-3.12.10.drv",
-      "description": "High-level dynamically-typed programming language",
-      "install_id": "python312",
-      "license": "Python-2.0",
+      "derivation": "/nix/store/cfl3plbcd7gw85pvgh0ybam0jqp5gmzv-python3.12-pipx-1.7.1.drv",
+      "description": "Install and run Python applications in isolated environments",
+      "install_id": "pipx",
+      "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
-      "name": "python3-3.12.10",
-      "pname": "python312",
+      "name": "pipx-1.7.1",
+      "pname": "pipx",
       "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
       "rev_count": 816272,
       "rev_date": "2025-06-17T04:31:58Z",
-      "scrape_date": "2025-06-18T01:12:32.475143Z",
+      "scrape_date": "2025-06-18T01:12:31.531321Z",
       "stabilities": [
         "unstable"
       ],
       "unfree": false,
-      "version": "python3-3.12.10",
+      "version": "1.7.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/g13l84j8gn1fdhl3pzkg2r9ip9jz1hhd-python3-3.12.10"
+        "dist": "/nix/store/8bv0x4xd42nrl3zcaf5n825nhdvn07f7-python3.12-pipx-1.7.1-dist",
+        "out": "/nix/store/cw42qrjcrhyg85y3idc5rfcs9gr7yiri-python3.12-pipx-1.7.1"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "python312",
+      "attr_path": "pipx",
       "broken": false,
-      "derivation": "/nix/store/h95xflanqqarxi1j9wxmmvsh62yz8nv1-python3-3.12.10.drv",
-      "description": "High-level dynamically-typed programming language",
-      "install_id": "python312",
-      "license": "Python-2.0",
+      "derivation": "/nix/store/6cw6j7a7nzjs1vwqnlcj16iw8pmnhzfb-python3.12-pipx-1.7.1.drv",
+      "description": "Install and run Python applications in isolated environments",
+      "install_id": "pipx",
+      "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
-      "name": "python3-3.12.10",
-      "pname": "python312",
+      "name": "pipx-1.7.1",
+      "pname": "pipx",
       "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
       "rev_count": 816272,
       "rev_date": "2025-06-17T04:31:58Z",
-      "scrape_date": "2025-06-18T01:32:53.619114Z",
+      "scrape_date": "2025-06-18T01:32:51.279191Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.7.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/9k1zfv31m0rbl39srszapiwy2v6lcx07-python3.12-pipx-1.7.1-dist",
+        "out": "/nix/store/lw6zg4pk89jflvnil0n4icgkl7icbbj4-python3.12-pipx-1.7.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pymupdf",
+      "broken": false,
+      "derivation": "/nix/store/s9q0cmpn1gcllxa33yzmpdpiqgpi4a2s-python3.12-pymupdf-1.25.2.drv",
+      "description": "Python bindings for MuPDF's rendering library",
+      "install_id": "pymupdf",
+      "license": "AGPL-3.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pymupdf-1.25.2",
+      "pname": "pymupdf",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:30.196551Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.25.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/zdz09p1im998crylgvmikrrs2006dzzp-python3.12-pymupdf-1.25.2-dist",
+        "out": "/nix/store/nvwng516f9p97ap50jl9h5zcj4631fqs-python3.12-pymupdf-1.25.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pymupdf",
+      "broken": false,
+      "derivation": "/nix/store/fk9yxhjic1fkw3g6abk62dx62r74iq9f-python3.12-pymupdf-1.25.2.drv",
+      "description": "Python bindings for MuPDF's rendering library",
+      "install_id": "pymupdf",
+      "license": "AGPL-3.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pymupdf-1.25.2",
+      "pname": "pymupdf",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:19.057295Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.25.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/xdk12qbyazrppav35aa11nszlwz8qq7y-python3.12-pymupdf-1.25.2-dist",
+        "out": "/nix/store/19yij208ldnq6ih9lh5fmi7kg23wba5s-python3.12-pymupdf-1.25.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pymupdf",
+      "broken": false,
+      "derivation": "/nix/store/9pklzrnzyn90hjrbjkaicq6yjzpyr7mj-python3.12-pymupdf-1.25.2.drv",
+      "description": "Python bindings for MuPDF's rendering library",
+      "install_id": "pymupdf",
+      "license": "AGPL-3.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pymupdf-1.25.2",
+      "pname": "pymupdf",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:37.792302Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.25.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/lp858af6smj3qs7vlcb4k4i5wg24wdxh-python3.12-pymupdf-1.25.2-dist",
+        "out": "/nix/store/v8kr8fnsrvmbpxgahhihc0l43m0s0i0l-python3.12-pymupdf-1.25.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Packages.pymupdf",
+      "broken": false,
+      "derivation": "/nix/store/1ykz0yk90ylwxvlvdfz3xwny99rbgj4x-python3.12-pymupdf-1.25.2.drv",
+      "description": "Python bindings for MuPDF's rendering library",
+      "install_id": "pymupdf",
+      "license": "AGPL-3.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3.12-pymupdf-1.25.2",
+      "pname": "pymupdf",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:33:02.514999Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.25.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/m83zgl534mw0s8kq6ppm8sv9qbyadkp3-python3.12-pymupdf-1.25.2-dist",
+        "out": "/nix/store/1lcqcly0wsb8awnrp54vdgz3s4wb4wx5-python3.12-pymupdf-1.25.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Full",
+      "broken": false,
+      "derivation": "/nix/store/13whxf5qwc6w5cm9srjbh6pinvlf3vni-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312Full",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312Full",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:36:24.959014Z",
       "stabilities": [
         "unstable"
       ],
@@ -750,8 +1293,96 @@
         "out"
       ],
       "outputs": {
-        "debug": "/nix/store/fi03x2bn49bmm3h53snkdmkypilnd5n2-python3-3.12.10-debug",
-        "out": "/nix/store/8w718rm43x7z73xhw9d6vh8s4snrq67h-python3-3.12.10"
+        "out": "/nix/store/g5q4xg2zbyb6fxaj7wg31rm4hgvyx022-python3-3.12.10"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Full",
+      "broken": false,
+      "derivation": "/nix/store/pfp6jh5cv3ax700lvs0mm6h1420m3b7k-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312Full",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312Full",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T00:55:10.788889Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/zhc6xh7ms92yidkvdw1glvlv4imdbvc6-python3-3.12.10-debug",
+        "out": "/nix/store/izacha8p03ww2wg8z5ddim5gmh2wb9xb-python3-3.12.10"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Full",
+      "broken": false,
+      "derivation": "/nix/store/yhzsvgp84wl01jzfndq54rnk0r2y7wzg-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312Full",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312Full",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:12:32.475913Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/0zka1v20l07rdcss5m06plc4d37hzbjz-python3-3.12.10"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python312Full",
+      "broken": false,
+      "derivation": "/nix/store/6badxdfxskh6zb7lgbh9abmrm7fdm2v9-python3-3.12.10.drv",
+      "description": "High-level dynamically-typed programming language",
+      "install_id": "python312Full",
+      "license": "Python-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "name": "python3-3.12.10",
+      "pname": "python312Full",
+      "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
+      "rev_count": 816272,
+      "rev_date": "2025-06-17T04:31:58Z",
+      "scrape_date": "2025-06-18T01:32:53.620404Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3-3.12.10",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/hn14bhpcz56yf87w4jbyfyi7vwwyr829-python3-3.12.10-debug",
+        "out": "/nix/store/cc6d33xzbk5lrgs8wbj202xxpl5m0wa1-python3-3.12.10"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

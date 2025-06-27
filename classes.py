@@ -16,6 +16,7 @@ class ArtifactType(enum.Enum):
     IMAGE = "image"
     WHITE_TEXT = "white_text"
     FILLED_RECTANGLE = "filled_rectangle"
+    POTENTIAL_SIGNATURE = "potential_signature"
 
 class ExtractedArtifact:
     def __init__(self, page_number, text, object_ref=None, description="", artifact_type: ArtifactType = ArtifactType.UNSPECIFIED):
@@ -65,7 +66,7 @@ class PossibleArtifactFinding():
         }
     
 class ScannedPDF:
-    def __init__(self, path: str, author: str = "", title: str = "", subject: str = "", keywords: str = "", producer: str = "", creator: str = "", creation_date : datetime = None, modification_date : datetime = None):
+    def __init__(self, path: str, author: str = "", title: str = "", subject: str = "", keywords: str = "", producer: str = "", creator: str = "", creation_date : datetime = None, modification_date : datetime = None, potential_signatures: bool=False):
         self.path: str = path
         self.author: str = author
         self.title: str = title
@@ -73,6 +74,7 @@ class ScannedPDF:
         self.keywords: str = keywords
         self.producer: str = producer
         self.creator: str = creator
+        self.potential_signatures: bool = potential_signatures
         self.creation_date : Optional[datetime] = creation_date
         self.modification_date : Optional[datetime] = modification_date
         self.findings : list[PossibleArtifactFinding] = []
@@ -91,5 +93,6 @@ class ScannedPDF:
             "modification_date": self.modification_date.isoformat() if self.modification_date else "",
             "producer": self.producer,
             "creator": self.creator,
+            "potential_signatures": self.potential_signatures,
             "findings": [finding.to_dict() for finding in self.findings]
         }

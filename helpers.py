@@ -4,12 +4,13 @@ import json
 import logging
 from pathlib import Path
 from pydoc import resolve
-from classes import ExecutionConfiguration, ExtractedArtifact, PossibleArtifactFinding, ScannedPDF, ArtifactType
+from classes import ExtractedArtifact, PossibleArtifactFinding, ScannedPDF, ArtifactType
 import pdfplumber 
 import easyocr
 import re
 from PIL import Image
 from regexes import re_objects
+import fitz
 
 PATTERNS = { key: re.compile(pattern) for key, pattern in re_objects.items() }
 
@@ -63,9 +64,10 @@ def parse_pdf_date(pdf_date: str) -> datetime:
 
     return dt.replace(tzinfo=tz)
 
-def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
+def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF, out:Path):
     last_page_number = -1
     last_y_offset = -1
+    has_dark_rects = False
     try:
         for page in pdf.pages:
             last_page_number = page.page_number
@@ -85,10 +87,12 @@ def extract_text_inside_filled_rectangles(pdf: pdfplumber.PDF):
                 # Check if the rectangle is filled
                 if not rect.get('fill', None) == True:
                     continue
+                else:
+                    has_dark_rects = True
 
                 # check if the rectangle has a dark color
                 non_stroking_color = rect.get('non_stroking_color', [])
-                if isinstance(non_stroking_color, float):
+                if isinstance(non_stroking_color, float) or isinstance(non_stroking_color, int):
                     non_stroking_color = [non_stroking_color]
                 if not all(0.0 <= c <= 0.2 for c in non_stroking_color):
                     continue
@@ -168,32 +172,35 @@ def _extract_image_data_from_pdf_image(image: dict) -> Image.Image:
             data = data[:expected_len]
         return Image.frombytes(mode, (width, height), data)
 
-    elif "JPXDecode" in str(filter_):
+    else: 
         # JPEG2000 - supported by Pillow
-        return Image.open(io.BytesIO(data))
+        return Image.open(io.BytesIO(data), formats=None) # Try loading all formats
 
-    else:
-        raise NotImplementedError(f"Unsupported filter: {filter_}")
+
+def _extract_images_from_page(page):
+    for img in page.images:
+        buffer = io.BytesIO()
+        image = _extract_image_data_from_pdf_image(img)
+        image.save(buffer, format="PNG")
+        yield buffer
 
 async def extract_images_from_pdf(pdf: pdfplumber.PDF):
     last_page_number = -1
     last_image = None
+    n = len(pdf.pages)
     try:
         reader = easyocr.Reader(['en', 'nl'], gpu=True)
         logging.info(f"Extracting images from PDF: {pdf.path.as_posix()} with {len(pdf.pages)} pages")
-        for page in pdf.pages:
+        for i, page in enumerate(pdf.pages):
             last_page_number = page.page_number
-            for img in page.images:
-                buffer = io.BytesIO()
-                image = _extract_image_data_from_pdf_image(img)
-                last_image = image
-                image.save(buffer, format="PNG")
-                image_text = reader.readtext(buffer.getvalue(), detail=0)
+            for img_buffer in _extract_images_from_page(page):
+                last_image = img_buffer
+                image_text = reader.readtext(img_buffer.getvalue(), detail=0)
                 yield ExtractedArtifact(
                     page.page_number,
                     image_text if image_text else "",
-                    object_ref=image,
-                    description=f"Image on page {page.page_number} with size {img['width']}x{img['height']}"
+                    object_ref=img_buffer,
+                    description=f"Image on page {page.page_number}"
                 )
     except Exception as e:
         if last_image:
@@ -211,7 +218,11 @@ def extract_pii(text: str):
             if match:
                 yield (key, match)
 
-async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
+def check_for_signatures(pdf: pdfplumber.PDF) -> bool:
+    last_page = pdf.pages[-1]
+    return any(last_page.images)
+
+async def process_pdf(pdf_path:Path, do_regex:bool, output_path: Path) -> ScannedPDF:
     """ Processes a PDF file to extract text and images, yielding PII data found in the text.
     
     Args:
@@ -220,7 +231,7 @@ async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
         PossibleArtifactFinding: An object containing the page number, extracted text, and artifact type.
     """
     scanned_pdf = ScannedPDF(pdf_path.as_posix())
-    findings = []
+    findings: list[PossibleArtifactFinding] = []
     with pdfplumber.open(scanned_pdf.path) as pdf:
         if not pdf.pages:
             logging.error(f"No pages found in PDF: {pdf_path}")
@@ -242,19 +253,21 @@ async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
             pass
 
         logging.info(f"Processing PDF: {pdf_path} with {len(pdf.pages)} pages")
-        white_text = extract_white_text_from_pdf(pdf)
-        masked_text = extract_text_inside_filled_rectangles(pdf)
+        # white_text = extract_white_text_from_pdf(pdf)
+        masked_text = extract_text_inside_filled_rectangles(pdf, output_path)
+        scanned_pdf.potential_signatures = check_for_signatures(pdf)
 
-        for artifact in white_text:
-            if artifact.text:
-                logging.debug(f"Extracted white text from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
-                findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "white_text"))
+        # for artifact in white_text:
+        #     if artifact.text:
+        #         logging.debug(f"Extracted white text from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
+        #         findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "white_text"))
 
         for artifact in masked_text:
             if artifact.text:
                 logging.debug(f"Extracted text inside filled rectangle from page {artifact.page_number} in PDF {pdf_path}: {artifact.text}")
                 findings.append(PossibleArtifactFinding.from_extracted_artifact(artifact, artifact.text, "filled_rectangle"))
 
+                                
         if do_regex:
             text = extract_text_from_pdf(pdf)
             images = extract_images_from_pdf(pdf)
@@ -273,5 +286,9 @@ async def process_pdf(pdf_path:Path, do_regex:bool) -> ScannedPDF:
         # endof do_regex
 
     scanned_pdf.add_findings(findings)
+    output_file = output_path / (pdf_path.stem + ".json")
+    with open(output_file, 'w') as f:
+        json.dump(scanned_pdf.to_dict(), f)
+
     return scanned_pdf
 

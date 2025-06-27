@@ -15,12 +15,17 @@ version = 1
 ##  $ flox show gum     <- show all versions of a package
 ## -------------------------------------------------------------------
 [install]
-python312.pkg-path = "python312"
 pdfplumber.pkg-path = "python312Packages.pdfplumber"
 jupyter.pkg-path = "python312Packages.jupyter"
 easyocr.pkg-path = "python312Packages.easyocr"
 imagehash.pkg-path = "python312Packages.imagehash"
 debugpy.pkg-path = "python312Packages.debugpy"
+numpy.pkg-path = "python312Packages.numpy"
+python312Full.pkg-path = "python312Full"
+pipx.pkg-path = "pipx"
+clang.pkg-path = "clang"
+pymupdf.pkg-path = "python312Packages.pymupdf"
+libtiff.pkg-path = "libtiff"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 

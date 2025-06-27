@@ -1,5 +1,8 @@
-test/data/nda
-output/results.json
+test/data/*
+output*
+.DS_Store
+results*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
